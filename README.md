@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-I chose Exercise 1, the Personal Task Manager. The application is a full-stack task management system built using React and Node.js. It allows a user to create, edit, delete, search, filter, and manage tasks efficiently through a clean dashboard interface.
+I choose Exercise 1, the Personal Task Manager. The application is a full-stack task management system built using React and Node.js. It allows a user to create, edit, delete, search, filter, and manage tasks efficiently through a clean dashboard interface.
 The application supports task persistence using a JSON file on the backend, ensuring tasks remain available even after server restarts. Users can also track completed and active tasks through real-time statistics and visually identify overdue tasks.
 
 ---
