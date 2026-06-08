@@ -361,12 +361,37 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  .app-container {
-    padding: 10px;
+
+  .dashboard {
+    flex-direction: column;
   }
 
-  h1 {
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    padding: 20px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .dashboard-header h1 {
     font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-card {
+    width: 900px;
+    max-width: 100%;
+  }
+
+  .sidebar-menu button,
+  .add-task-btn {
+    width: 100%;
   }
 
   button {
