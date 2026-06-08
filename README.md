@@ -2,27 +2,22 @@
 
 ## Project Overview
 
-Personal Task Manager is a full-stack web application built using React and Node.js. The application helps users organize and manage their daily tasks efficiently through a clean dashboard interface.
+I chose Exercise 1, the Personal Task Manager. The application is a full-stack task management system built using React and Node.js. It allows a user to create, edit, delete, search, filter, and manage tasks efficiently through a clean dashboard interface.
 
-Users can create, edit, delete, search, filter, and track the completion status of tasks. The application follows a full-stack architecture with a React frontend, Express backend, and JSON-based data persistence.
-
-This project was developed as part of the Studio Graphene Full Stack Developer Assessment.
+The application supports task persistence using a JSON file on the backend, ensuring tasks remain available even after server restarts. Users can also track completed and active tasks through real-time statistics and visually identify overdue tasks.
 
 ---
 
-# GitHub Repository
+# Live Demo Links
 
-Repository Link:
+Frontend:
+https://task-manager-six-tau-87.vercel.app
 
+Backend:
+https://task-manager-r36g.onrender.com
+
+GitHub Repository:
 https://github.com/Harsh1001-1/Task-Manager
-
----
-
-# Live Demo
-
-Frontend: Not Deployed Yet
-
-Backend: Not Deployed Yet
 
 ---
 
@@ -40,11 +35,11 @@ Backend: Not Deployed Yet
 * Node.js
 * Express.js
 
-## Data Storage
+## Storage
 
-* JSON File Storage (`tasks.json`)
+* JSON File Storage (`server/data/tasks.json`)
 
-## Tools
+## Development Tools
 
 * Git
 * GitHub
@@ -53,110 +48,67 @@ Backend: Not Deployed Yet
 
 ---
 
-# Features
+# How to Run Locally
 
-## Task Management
+## Install Dependencies
 
-* Create new tasks
-* View all tasks
-* Edit existing tasks
-* Delete tasks
-* Mark tasks as completed
-* Mark tasks as active
+Backend:
 
-## Filtering
+```bash
+cd server
+npm install
+```
 
-* View All Tasks
-* View Active Tasks
-* View Completed Tasks
+Frontend:
 
-## Search
+```bash
+cd client
+npm install
+```
 
-* Search tasks by title
+## Start Backend
 
-## Statistics Dashboard
+```bash
+cd server
+npm run dev
+```
 
-* Total Tasks Count
-* Active Tasks Count
-* Completed Tasks Count
-
-## Additional Features
-
-* Overdue Task Highlighting
-* Confirmation Before Delete
-* Persistent Data Storage
-* Responsive Dashboard Layout
-* Sidebar Navigation
-* Modern UI Design
-
----
-
-# Screenshots
-
-Add screenshots of the application here before submission.
-
-Example:
-
-* Dashboard View
-* Add Task Form
-* Task Statistics
-* Task Filtering
-
----
-
-# Project Structure
+Backend runs on:
 
 ```text
-taskmanager/
-│
-├── client/
-│   ├── src/
-│   │
-│   ├── components/
-│   │   ├── SearchBar.jsx
-│   │   ├── TaskForm.jsx
-│   │   ├── TaskList.jsx
-│   │   ├── TaskItem.jsx
-│   │   └── TaskStats.jsx
-│   │
-│   ├── style/
-│   │   └── App.css
-│   │
-│   ├── App.jsx
-│   │
-│   └── main.jsx
-│
-├── server/
-│   │
-│   ├── controllers/
-│   │   └── taskController.js
-│   │
-│   ├── routes/
-│   │   └── taskRoutes.js
-│   │
-│   ├── data/
-│   │   └── tasks.json
-│   │
-│   ├── server.js
-│   │
-│   └── package.json
-│
-├── .gitignore
-│
-└── README.md
+http://localhost:5000
+```
+
+## Start Frontend
+
+Open a second terminal:
+
+```bash
+cd client
+npm run dev
+```
+
+Frontend runs on:
+
+```text
+http://localhost:5173
 ```
 
 ---
 
 # API Documentation
 
-## Get All Tasks
+## Base URL
 
-### Request
-
-```http
-GET /api/tasks
+```text
+http://localhost:5000/api/tasks
 ```
+
+---
+
+## GET /api/tasks
+
+Returns all saved tasks.
 
 ### Response
 
@@ -174,13 +126,9 @@ GET /api/tasks
 
 ---
 
-## Create Task
+## POST /api/tasks
 
-### Request
-
-```http
-POST /api/tasks
-```
+Creates a new task.
 
 ### Request Body
 
@@ -202,13 +150,9 @@ POST /api/tasks
 
 ---
 
-## Update Task
+## PUT /api/tasks/:id
 
-### Request
-
-```http
-PUT /api/tasks/:id
-```
+Updates a task.
 
 ### Request Body
 
@@ -228,31 +172,9 @@ PUT /api/tasks/:id
 
 ---
 
-## Delete Task
+## PATCH /api/tasks/:id/toggle
 
-### Request
-
-```http
-DELETE /api/tasks/:id
-```
-
-### Response
-
-```json
-{
-  "message": "Task deleted successfully"
-}
-```
-
----
-
-## Toggle Task Status
-
-### Request
-
-```http
-PATCH /api/tasks/:id/toggle
-```
+Toggles task completion status.
 
 ### Response
 
@@ -264,126 +186,133 @@ PATCH /api/tasks/:id/toggle
 
 ---
 
-# How To Run Locally
+## DELETE /api/tasks/:id
 
-## Prerequisites
+Deletes a task.
 
-Install:
+### Response
 
-* Node.js
-* Git
-
----
-
-## Clone Repository
-
-```bash
-git clone https://github.com/Harsh1001-1/Task-Manager.git
-```
-
-```bash
-cd Task-Manager
+```json
+{
+  "message": "Task deleted successfully"
+}
 ```
 
 ---
 
-## Backend Setup
-
-```bash
-cd server
-npm install
-npm run dev
-```
-
-Backend runs on:
+# Project Structure
 
 ```text
-http://localhost:5000
+Task-Manager/
+│
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── TaskForm.jsx
+│   │   │   ├── TaskList.jsx
+│   │   │   ├── TaskItem.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   └── TaskStats.jsx
+│   │   │
+│   │   ├── style/
+│   │   │   └── App.css
+│   │   │
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   └── package.json
+│
+├── server/
+│   ├── controllers/
+│   │   └── taskController.js
+│   │
+│   ├── routes/
+│   │   └── taskRoutes.js
+│   │
+│   ├── data/
+│   │   └── tasks.json
+│   │
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## Frontend Setup
+# Features Implemented
 
-Open a new terminal:
+## Must Have
 
-```bash
-cd client
-npm install
-npm run dev
-```
+* Add a new task
+* View all tasks
+* Edit tasks
+* Delete tasks with confirmation
+* Toggle task completion
+* Filter by:
 
-Frontend runs on:
+  * All
+  * Active
+  * Completed
 
-```text
-http://localhost:5173
-```
+## Should Have
+
+* Active vs Completed task statistics
+* Overdue task highlighting
+* Empty state UI
+
+## Nice To Have
+
+* Search tasks by title
+* Persistent JSON storage
 
 ---
 
-# Design Decisions
+# What Works
 
-## Why React?
-
-React provides component-based architecture and efficient state management for building dynamic user interfaces.
-
-## Why Express?
-
-Express offers a lightweight and flexible framework for building REST APIs.
-
-## Why JSON File Storage?
-
-The assessment allowed in-memory storage, JSON files, or SQLite. JSON file storage was chosen because it provides persistence without requiring database setup.
+* Add task with title, description, and due date
+* Edit task title
+* Delete task with confirmation
+* Toggle completion status
+* Filter tasks by status
+* Search tasks by title
+* Display task statistics
+* Highlight overdue tasks
+* Persist tasks using JSON file storage
+* Responsive layout for mobile devices
+* Full frontend-backend integration
 
 ---
 
 # Challenges Faced
 
-* Integrating React frontend with Express backend
-* Implementing task persistence using file storage
-* Managing CRUD operations across frontend and backend
-* Maintaining responsive UI layout
+* Connecting React frontend with Express backend
+* Managing task persistence through file storage
+* Implementing RESTful CRUD operations
+* Deploying frontend and backend separately
+* Handling CORS and production API URLs
 
 ---
 
-# Future Improvements
+# Next Steps
 
-Given more time, the following features would be added:
+If given more time, I would add:
 
 * User Authentication
-* Task Categories
 * Task Priority Levels
-* Drag and Drop Reordering
+* Drag-and-Drop Task Reordering
 * Toast Notifications
 * Dark Mode
-* Unit Testing
-* Pagination
-* Cloud Database Integration
-* Deployment on Vercel and Render
+* Automated Unit Tests
+* SQLite or MongoDB Integration
+* Environment Variable Configuration
+* Task Categories and Tags
 
 ---
 
-# Assessment Requirements Covered
+# Production Note
 
-### Must Have
-
-* Add Task
-* View Tasks
-* Edit Task
-* Delete Task
-* Toggle Completion Status
-* Filter Tasks
-
-### Should Have
-
-* Task Statistics
-* Overdue Task Highlighting
-* Empty State UI
-
-### Nice To Have
-
-* Search Tasks
-* Persistent Storage using JSON File
+This project uses JSON file storage for simplicity and assessment purposes. In a production environment, task data would typically be stored in a database such as PostgreSQL, MySQL, MongoDB, or SQLite to provide scalability and reliability.
 
 ---
 
@@ -397,5 +326,3 @@ Graphic Era Hill University
 
 GitHub:
 https://github.com/Harsh1001-1
-
----
