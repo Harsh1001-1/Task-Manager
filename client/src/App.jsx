@@ -16,8 +16,7 @@ import TaskStats from "./components/TaskStats";
 function App() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-  axios
-    .get("http://localhost:5000/api/tasks")
+    axios.get("https://task-manager-r36g.onrender.com/api/tasks")
     .then((response) => {
       setTasks(
         [...response.data].reverse()
@@ -36,9 +35,9 @@ function App() {
   const addTask = async (task) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/tasks",
-      task
-    );
+  "https://task-manager-r36g.onrender.com/api/tasks",
+  task
+);
 
    setTasks([
   response.data.task,
@@ -54,9 +53,8 @@ function App() {
  const toggleTask = async (id) => {
   try {
     await axios.patch(
-      `http://localhost:5000/api/tasks/${id}/toggle`
-    );
-
+  `https://task-manager-r36g.onrender.com/api/tasks/${id}/toggle`
+)
     setTasks(
       tasks.map((task) =>
         task.id === id
@@ -80,9 +78,8 @@ function App() {
   if (confirmDelete) {
     try {
       await axios.delete(
-        `http://localhost:5000/api/tasks/${id}`
-      );
-
+  `https://task-manager-r36g.onrender.com/api/tasks/${id}`
+)
       setTasks(
         tasks.filter(
           (task) => task.id !== id
@@ -97,7 +94,7 @@ function App() {
   const editTask = async (id, newTitle) => {
   try {
     await axios.put(
-      `http://localhost:5000/api/tasks/${id}`,
+  `https://task-manager-r36g.onrender.com/api/tasks/${id}`,
       {
         title: newTitle,
       }
